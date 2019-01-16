@@ -66,9 +66,12 @@ export default function(opt) {
         const isNewClientRequest = ctx.query['new'] !== undefined;
         if (isNewClientRequest) {
             const reqId = hri.random();
+            console.log(111);
             debug('making new client with id %s', reqId);
             const info = await manager.newClient(reqId);
+            console.log(2222);
             manager.print();
+            console.log(3333);
             const url = schema + '://' + info.id + '.' + ctx.request.host;
             info.url = url;
             ctx.body = info;
@@ -127,7 +130,6 @@ export default function(opt) {
         }
         console.log('hostname', hostname);
         const clientId = GetClientIdFromHostname(hostname);
-        console.log('clientId', clientId);
         if (!clientId) {
             appCallback(req, res);
             return;
