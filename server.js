@@ -106,7 +106,7 @@ export default function(opt) {
             };
             return;
         }
-
+        console.log('created........');
         debug('making new client with id %s', reqId);
         const info = await manager.newClient(reqId);
         manager.print(debug);
