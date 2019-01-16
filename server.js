@@ -125,14 +125,16 @@ export default function(opt) {
             res.end('Host header is required');
             return;
         }
-
+        console.log('hostname', hostname);
         const clientId = GetClientIdFromHostname(hostname);
+        console.log('clientId', clientId);
         if (!clientId) {
             appCallback(req, res);
             return;
         }
 
         const client = manager.getClient(clientId);
+        console.log('client', client);
         if (!client) {
             res.statusCode = 404;
             res.end('404');
