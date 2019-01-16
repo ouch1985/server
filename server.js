@@ -138,7 +138,7 @@ export default function(opt) {
         if (!client) {
             let cc = manager.children();
             console.log('==========');
-            for(let key in manager){
+            for(let key in cc){
                 console.log('key:', key);
             }
             console.log('+++++++++++');
