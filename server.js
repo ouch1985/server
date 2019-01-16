@@ -134,8 +134,14 @@ export default function(opt) {
         }
 
         const client = manager.getClient(clientId);
-        console.log('client', client);
+
         if (!client) {
+            let clients = manager.children();
+            console.log('==========');
+            for(let key in manager){
+                console.log('key:', key);
+            }
+            console.log('+++++++++++');
             res.statusCode = 404;
             res.end('404');
             return;
