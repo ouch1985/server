@@ -67,7 +67,7 @@ export default function(opt) {
         if (isNewClientRequest) {
             const reqId = hri.random();
             debug('111');
-            debug('making new client with id %s', reqId);
+            debug('making111111 new client with id %s', reqId);
             const info = await manager.newClient(reqId);
             debug('2222');
             manager.print(debug);
