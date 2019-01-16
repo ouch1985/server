@@ -136,7 +136,7 @@ export default function(opt) {
         const client = manager.getClient(clientId);
 
         if (!client) {
-            let clients = manager.children();
+            let cc = manager.children();
             console.log('==========');
             for(let key in manager){
                 console.log('key:', key);
