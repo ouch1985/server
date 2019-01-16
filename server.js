@@ -68,7 +68,7 @@ export default function(opt) {
             const reqId = hri.random();
             debug('making new client with id %s', reqId);
             const info = await manager.newClient(reqId);
-
+            manager.print();
             const url = schema + '://' + info.id + '.' + ctx.request.host;
             info.url = url;
             ctx.body = info;
@@ -106,7 +106,6 @@ export default function(opt) {
 
         debug('making new client with id %s', reqId);
         const info = await manager.newClient(reqId);
-        debug('ok');
 
         const url = schema + '://' + info.id + '.' + ctx.request.host;
         info.url = url;
@@ -137,12 +136,7 @@ export default function(opt) {
         const client = manager.getClient(clientId);
 
         if (!client) {
-            let cc = manager.children();
-            console.log('==========');
-            for(let key in cc){
-                console.log('key:', key);
-            }
-            console.log('+++++++++++');
+            manager.print();
             res.statusCode = 404;
             res.end('404');
             return;
