@@ -66,12 +66,9 @@ export default function(opt) {
         const isNewClientRequest = ctx.query['new'] !== undefined;
         if (isNewClientRequest) {
             const reqId = hri.random();
-            debug('111');
-            debug('making111111 new client with id %s', reqId);
+            debug('making new client with id %s', reqId);
             const info = await manager.newClient(reqId);
-            debug('2222');
-            manager.print(debug);
-            debug('3333');
+
             const url = schema + '://' + info.id + '.' + ctx.request.host;
             info.url = url;
             ctx.body = info;
@@ -106,10 +103,9 @@ export default function(opt) {
             };
             return;
         }
-        console.log('created........');
+
         debug('making new client with id %s', reqId);
         const info = await manager.newClient(reqId);
-        manager.print(debug);
 
         const url = schema + '://' + info.id + '.' + ctx.request.host;
         info.url = url;
@@ -129,7 +125,7 @@ export default function(opt) {
             res.end('Host header is required');
             return;
         }
-        console.log('hostname', hostname);
+
         const clientId = GetClientIdFromHostname(hostname);
         if (!clientId) {
             appCallback(req, res);
@@ -137,9 +133,7 @@ export default function(opt) {
         }
 
         const client = manager.getClient(clientId);
-
         if (!client) {
-            manager.print(debug);
             res.statusCode = 404;
             res.end('404');
             return;
