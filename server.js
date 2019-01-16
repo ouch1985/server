@@ -66,12 +66,12 @@ export default function(opt) {
         const isNewClientRequest = ctx.query['new'] !== undefined;
         if (isNewClientRequest) {
             const reqId = hri.random();
-            console.log(111);
+            debug('111');
             debug('making new client with id %s', reqId);
             const info = await manager.newClient(reqId);
-            console.log(2222);
-            manager.print();
-            console.log(3333);
+            debug('2222');
+            manager.print(debug);
+            debug('3333');
             const url = schema + '://' + info.id + '.' + ctx.request.host;
             info.url = url;
             ctx.body = info;
@@ -138,7 +138,7 @@ export default function(opt) {
         const client = manager.getClient(clientId);
 
         if (!client) {
-            manager.print();
+            manager.print(debug);
             res.statusCode = 404;
             res.end('404');
             return;
